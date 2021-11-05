@@ -1,0 +1,31 @@
+<div class="file-tree-viewer" [class.loading]="loadingFolderData === true">
+  <ul>
+    <ng-container *ngTemplateOutlet="recursiveListTmpl; context:{ list: list }"></ng-container>
+  </ul>
+
+  <ng-template #recursiveListTmpl let-list="list">
+    <li *ngFor="let item of list">
+      <a (click)="loadChildren(item)" class="btn-tree-item" [class.file-link]="item.type === 'file'"><i
+          class="fas fa-{{ item.type }} tree-icon"></i>{{
+        item.name }}</a>
+
+      <i class="fas fa-pencil-alt file-edit" *ngIf="item.type === 'file'" (click)="openRenameFile(item)"></i>
+
+      <i class="fas fa-external-link-alt file-edit" *ngIf="item.type === 'file'" (click)="openFile(item.id)"></i>
+
+      <i class="far fa-eye file-preview" *ngIf="item.preview === true"></i>
+
+      <ul *ngIf="item.children && item.open === true">
+        <ng-container *ngTemplateOutlet="recursiveListTmpl; context:{ list: item.children }">
+        </ng-container>
+      </ul>
+    </li>
+  </ng-template>
+</div>
+
+<app-box-edit-filename [settings]="
+{
+  data: editedFile
+}
+" *ngIf="editedFile !== null" (itemEdited)="renameFile($event)" (windowClosed)="editedFile = null">
+</app-box-edit-filename>

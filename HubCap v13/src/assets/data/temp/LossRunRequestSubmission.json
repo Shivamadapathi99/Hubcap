@@ -1,0 +1,27 @@
+{
+  "formId": 1,
+  "formName": "LOSS RUN REQUEST",
+  "requestType": "CLAIM_LOSS_RUN_REQUEST",
+  "formData": [
+    {
+      "id": "1",
+      "formControlName": "POLICY_NUMBER",
+      "value": "HS12345678"
+    },
+    {
+      "id": "2",
+      "formControlName": "AGENCY_CODE",
+      "value": "12345"
+    },
+    {
+      "id": "3",
+      "formControlName": "AGENT_EMAIL_ADDRESS",
+      "value": "rradhakrishnan@capspecialty.com",
+    }
+  ],
+  "requestId": "<<GUID/UUID>>",
+  "requesterEmail": "afoust@capspecialty.com",
+  "boxId": [
+    "id": 1123343456
+  ]
+}

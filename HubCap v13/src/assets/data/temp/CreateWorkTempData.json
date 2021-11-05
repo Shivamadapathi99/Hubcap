@@ -1,0 +1,233 @@
+{
+  "formName": "Test Form 01",
+  "submitUrl": "http://www.test.com",
+  "formData": [
+    {
+      "id": "21654",
+      "formControlName": "textInputString21654",
+      "formControlLabel": "Text Input String",
+      "formControlType": "input",
+      "dataType": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    },
+    {
+      "id": "84571",
+      "formControlName": "textInputNumber84571",
+      "formControlLabel": "Text Input Number",
+      "formControlType": "input",
+      "dataType": "number",
+      "minLength": 1,
+      "maxLength": 5,
+      "selectOptions": [
+        {
+          "title": "Option 1",
+          "value": "option1"
+        },
+        {
+          "title": "Option 2",
+          "value": "option2"
+        },
+        {
+          "title": "Option 3",
+          "value": "option3"
+        }
+      ],
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        },
+        {
+          "type": "numberRangeInside",
+          "options": {
+            "lowValue": 10,
+            "highValue": 100
+          }
+        },
+        {
+          "type": "numberRangeOutside",
+          "options": {
+            "lowValue": 10,
+            "highValue": 100
+          }
+        }
+      ]
+    },
+    {
+      "id": "91532",
+      "formControlName": "selectSingle91532",
+      "formControlLabel": "Select Single",
+      "formControlType": "select",
+      "multiple": false,
+      "dataType": "string",
+      "minLength": null,
+      "maxLength": null,
+      "selectOptions": [
+        {
+          "title": "Option 1",
+          "value": "option1"
+        },
+        {
+          "title": "Option 2",
+          "value": "option2"
+        },
+        {
+          "title": "Option 3",
+          "value": "option3"
+        }
+      ],
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    },
+    {
+      "id": "92346",
+      "formControlName": "selectMultiple92346",
+      "formControlLabel": "Select Multiple",
+      "formControlType": "select",
+      "multiple": true,
+      "dataType": "string",
+      "minLength": null,
+      "maxLength": null,
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    },
+    {
+      "id": "97546",
+      "formControlName": "dateInput97546",
+      "formControlLabel": "Date Input",
+      "formControlType": "date",
+      "dataType": "string",
+      "minLength": null,
+      "maxLength": null,
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        },
+        {
+          "type": "dateRangeInside",
+          "options": {
+            "lowValue": "01/01/2001",
+            "highValue": "01/01/2015"
+          }
+        },
+        {
+          "type": "dateRangeOutside",
+          "options": {
+            "lowValue": "01/01/2001",
+            "highValue": "01/01/2015"
+          }
+        }
+      ]
+    },
+    {
+      "id": "99456",
+      "formControlName": "radioGroup99456",
+      "formControlLabel": "Radio Group",
+      "formControlType": "radioGroup",
+      "dataType": "string",
+      "minLength": null,
+      "maxLength": null,
+      "radioOptions": [
+        {
+          "title": "Option 1",
+          "value": "option1"
+        },
+        {
+          "title": "Option 2",
+          "value": "option2"
+        },
+        {
+          "title": "Option 3",
+          "value": "option3"
+        }
+      ],
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    },
+    {
+      "id": "22457",
+      "formControlName": "checkBoxGroup22457",
+      "formControlLabel": "Check Box Group",
+      "formControlType": "checkBoxGroup",
+      "multiple": true,
+      "dataType": "string",
+      "minLength": null,
+      "maxLength": null,
+      "checkBoxOptions": [
+        {
+          "title": "Option 1",
+          "value": "option1"
+        },
+        {
+          "title": "Option 2",
+          "value": "option2"
+        },
+        {
+          "title": "Option 3",
+          "value": "option3"
+        }
+      ],
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    },
+    {
+      "id": "11223",
+      "formControlName": "textInputString11223",
+      "formControlLabel": "Text Area",
+      "formControlType": "textarea",
+      "dataType": "string",
+      "minLength": 10,
+      "maxLength": 300,
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    },
+    {
+      "id": "81645",
+      "formControlName": "fileUpload81645",
+      "formControlLabel": "Attach File(s)",
+      "formControlType": "fileUpload",
+      "dataType": "file",
+      "minLength": null,
+      "maxLength": null,
+      "acceptedFileTypes": [
+        "jpeg",
+        "gif",
+        "doc"
+      ],
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    }
+  ]
+}

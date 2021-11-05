@@ -1,0 +1,144 @@
+<div class="work-queue">
+
+  <app-cascading-select-filters [settings]="
+  {
+    data: filteredTableData,
+    filters: [
+      {
+        title: 'Status',
+        fieldName: 'status',
+        defaultValue: name === 'myQueue' ? 'Not Started' : 'In-Progress',
+        options: []
+      },
+      {
+        title: 'Workflow Name',
+        fieldName: 'workflowName',
+        defaultValue: 'All',
+        options: []
+      },
+      {
+        title: 'Step Name',
+        fieldName: 'stepTemplateName',
+        defaultValue: 'All',
+        options: []
+      }
+    ]
+  }" (dataUpdated)="updateFilteredData($event)" [hidden]="filteredTableData.length < 1 || workQueueVisible === false">
+  </app-cascading-select-filters>
+
+  <div [hidden]="filteredTableData.length < 1 || workQueueVisible === false">
+    <div class="table">
+      <div class="table-container">
+        <div class="btn-refresh-work-queue">
+          <i class="fas fa-sync" (click)="refreshWorkQueue()" matTooltip="Refresh"
+            *ngIf="settings.workQueueRefreshing === false"></i>
+          <mat-spinner [diameter]="35" *ngIf="settings.workQueueRefreshing === true"></mat-spinner>
+        </div>
+        <div class="mat-elevation-z4 data-table">
+          <mat-table [dataSource]="pageSettings.tableSettings.data" matSort>
+
+            <ng-container matColumnDef="edit">
+              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+              <mat-cell *matCellDef="let element; let i = index;">
+                <div>
+                  <mat-checkbox (change)="updateSelectedRows(i, $event)"></mat-checkbox>
+                  <i class="fas fa-pencil-alt icon-edit" (click)="editedWorkItem = element; workQueueVisible = false;"
+                    matTooltip="Edit" *ngIf="filteredData[i].selected === true || selectedTableRows.length === 0"></i>
+                  <i class="fas fa-link icon-link" *ngIf="element.boxDetails.length > 0" matTooltip="View Attachments"
+                    [matMenuTriggerFor]="documentsMenu"></i>
+                  <i class="fas fa-check icon-approve" [class.in-progress]="element.status === 'In-Progress'"
+                    [class.complete]="element.status === 'Completed'"
+                    [class.future-task]="element.status === 'Future Task'" [matMenuTriggerFor]="taskStatusMenu"
+                    matTooltip="Update Status" *ngIf="element.status !== 'Completed'"></i>
+                  <ng-container *ngIf="element.lockedStatus === false || element.lockedBy === dataMain.user.email">
+                    <i class="fas fa-lock icon-lock" (click)="updateLockedStatus(element, true)"
+                      *ngIf="element.lockedStatus === false" matTooltip="Lock"></i>
+                    <i class="fas fa-lock icon-lock locked" (click)="updateLockedStatus(element, false)"
+                      *ngIf="element.lockedStatus === true" matTooltip="Unlock"></i>
+                  </ng-container>
+                  <i class="far fa-clock icon-clock" matTooltip="History"
+                    (click)="selectedWorkHistoryItem = element; workQueueVisible = false;"></i>
+                  <mat-menu #documentsMenu="matMenu">
+                    <ng-container *ngFor="let attachment of element.boxDetails">
+                      <button mat-menu-item (click)="openAttachment(attachment.boxType, attachment.boxId)">
+                        <i class="fas fa-file textCapPurple mr-2" *ngIf="attachment.boxType === 'file'"></i>
+                        <i class="fas fa-folder textCapBlue mr-2" *ngIf="attachment.boxType === 'folder'"></i>
+                        <span>{{ attachment.boxId }}</span>
+                      </button>
+                    </ng-container>
+                  </mat-menu>
+                  <mat-menu #taskStatusMenu="matMenu">
+                    <button mat-menu-item (click)="updateTaskStatus(element, 'Future Task')">
+                      <i class="fas fa-check textCapBlue mr-2"></i>
+                      <span>Future Task</span>
+                    </button>
+                    <button mat-menu-item (click)="updateTaskStatus(element, 'Not Started')">
+                      <i class="fas fa-check textCapGray mr-2"></i>
+                      <span>Not Started</span>
+                    </button>
+                    <button mat-menu-item (click)="updateTaskStatus(element, 'In-Progress')">
+                      <i class="fas fa-check textCapYellow mr-2"></i>
+                      <span>In-Progress</span>
+                    </button>
+                    <button mat-menu-item (click)="updateTaskStatus(element, 'Completed')">
+                      <i class="fas fa-check textCapGreen mr-2"></i>
+                      <span>Completed</span>
+                    </button>
+                  </mat-menu>
+                </div>
+              </mat-cell>
+            </ng-container>
+
+            <ng-container *ngFor="let col of pageSettings.tableSettings.displayColumns | slice:1; let i = index;"
+              [matColumnDef]="col">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ pageSettings.tableSettings.columnTitles[i] }}
+              </mat-header-cell>
+              <mat-cell *matCellDef="let item">
+                <ng-container [ngSwitch]="pageSettings.tableSettings.pipes[i]">
+                  <span *ngSwitchCase="''">
+                    {{ item[col] }}
+                  </span>
+                  <span *ngSwitchCase="'date'">
+                    {{ item[col] | date:'MM/dd/yyyy hh:mm a' }}
+                  </span>
+                </ng-container>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="pageSettings.tableSettings.displayColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: pageSettings.tableSettings.displayColumns;"></mat-row>
+          </mat-table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="paginator">
+            <mat-paginator #paginator [pageSize]="20" [pageSizeOptions]="[20, 50, 100, 250, 500]"
+              [showFirstLastButtons]="true">
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="work-item-history" *ngIf="selectedWorkHistoryItem !== null">
+  <app-work-item-history [settings]="
+  {
+    data: selectedWorkHistoryItem,
+    showCloseButton: true
+  }
+  " (windowClosed)="closeWorkItemHistory()"></app-work-item-history>
+</div>
+
+<div *ngIf="editedWorkItem !== null">
+  <app-work-item-edit [settings]="
+    {
+      data: filteredData,
+      editedWorkItem: editedWorkItem,
+      selectedItems: selectedTableRows
+    }
+" (windowClosed)="closeWorkItemEdit()" (itemUpdated)="refreshWorkQueue()"></app-work-item-edit>
+</div>

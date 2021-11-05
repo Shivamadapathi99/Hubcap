@@ -1,0 +1,17 @@
+@import '../../../../styles/variables.scss';
+
+.file-search-form {
+  position: relative;
+
+  .btn-search {
+    color: $cap-blue;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      color: $cap-gray;
+      background-color: transparent;
+    }
+  }
+}

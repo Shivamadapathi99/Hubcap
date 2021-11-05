@@ -1,0 +1,72 @@
+<div class="work-item-edit">
+
+  <div>
+    <app-button [settings]="
+      {
+        type: 'link',
+        text: 'Back',
+        icon: 'fas fa-chevron-left',
+        iconPosition: 'left',
+        backgroundColor: null,
+        textColor: 'textCapNavy'
+      }
+      " (clicked)="closeWindow()"></app-button>
+  </div>
+
+  <div [hidden]="editFormData === null">
+    <div class="row">
+      <div class="col-12 edit-mode-controls">
+
+        <div class="select-nav">
+          <mat-select *ngIf="settings.data.length < 21 && settings.selectedItems.length === 0"
+            [value]="settings.editedWorkItem">
+            <mat-option *ngFor="let item of settings.data; let i = index;" [value]="item"
+              (click)="openEditMode(item, i)">
+              {{ item.taskName }}</mat-option>
+          </mat-select>
+          <mat-select *ngIf="settings.selectedItems.length < 21 && settings.selectedItems.length > 0"
+            [value]="settings.editedWorkItem">
+            <mat-option *ngFor="let item of settings.selectedItems; let i = index;" [value]="item"
+              (click)="openEditMode(item, i)">{{ item.taskName }}</mat-option>
+          </mat-select>
+        </div>
+
+        <a (click)="updateEditModeItem('previous')" class="btn-arrow-control" *ngIf="editedWorkItemNum > 0"><i
+            class="fas fa-arrow-circle-left edit-mode-control" matTooltip="Previous Task"></i></a>
+
+        <ng-container *ngIf="settings.selectedItems.length === 0">
+          <a (click)="updateEditModeItem('next')" class="btn-arrow-control"
+            *ngIf="editedWorkItemNum < settings.data.length - 1"><i class="fas fa-arrow-circle-right edit-mode-control"
+              matTooltip="Next Task"></i></a>
+        </ng-container>
+
+        <ng-container *ngIf="settings.selectedItems.length > 0">
+          <a (click)="updateEditModeItem('next')" class="btn-arrow-control"
+            *ngIf="editedWorkItemNum < settings.selectedItems.length - 1"><i
+              class="fas fa-arrow-circle-right edit-mode-control" matTooltip="Next Task"></i></a>
+        </ng-container>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 edit-container" [class.col-md-4]="editedWorkItemDocuments.length > 0">
+        <app-dynamic-form [settings]="
+        {
+            name: 'Update Work Item',
+            answerData: settings.editedWorkItem,
+            data: editFormData,
+            mode: 'modal',
+            submitButtonText: 'Update Work Item'
+        }
+        " *ngIf="editFormData !== null" (saveForm)="updateWorkQueueItem($event)"></app-dynamic-form>
+      </div>
+      <div class="col-12 col-md-8" *ngIf="editedWorkItemDocuments.length > 0">
+        <app-box-document-preview [settings]="
+        {
+          showCloseButton: false,
+          data: editedWorkItemDocuments
+        }"></app-box-document-preview>
+      </div>
+    </div>
+  </div>
+</div>

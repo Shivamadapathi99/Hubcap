@@ -1,0 +1,51 @@
+{
+  "formName": "LOSS RUN REQUEST",
+  "submitUrl": "http://www.test.com",
+  "formData": [
+    {
+      "id": "1",
+      "formControlName": "textInputString1",
+      "formControlLabel": "POLICY NUMBER",
+      "formControlType": "input",
+      "dataType": "string",
+      "minLength": 1,
+      "maxLength": 15,
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "formControlName": "textInputNumber2",
+      "formControlLabel": "AGENCY CODE",
+      "formControlType": "input",
+      "dataType": "number",
+      "minLength": 1,
+      "maxLength": 5,
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "formControlName": "selectSingle3",
+      "formControlLabel": "AGENT EMAIL ADDRESS",
+      "formControlType": "input",
+      "dataType": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    }
+  ]
+}

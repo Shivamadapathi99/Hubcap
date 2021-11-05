@@ -1,0 +1,62 @@
+<app-box-login-manager *ngIf="dataMain.user !== null" (boxInitialized)="init()"></app-box-login-manager>
+<div class="main" *ngIf="boxLoginStatus === true">
+  <div class="row mt-2 mb-3">
+    <div class="col-12 col-md-6">
+      <img src="/assets/images/logo@2x.png" class="capspecialty-logo-main" />
+    </div>
+    <div class="col-12 col-md-6 quick-links text-right">
+      <span class="quick-links-title">Quick Links:</span>
+      <ng-container *ngFor="let quickLink of dataMain.dashboard.quickLinks">
+        <a (click)="openQuickLink(quickLink)" class="btn-quick-link">{{ quickLink.title }}</a>
+      </ng-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <mat-tab-group mat-align-tabs="center" #tabs [selectedIndex]="selectedTabIndex"
+        (selectedTabChange)="tabChanged($event)">
+        <mat-tab label="Dashboard">
+          <div class="tab-content">
+            <!--<app-dashboard-temp></app-dashboard-temp>-->
+          </div>
+        </mat-tab>
+        <mat-tab label="My Queue">
+          <div class="tab-content">
+            <app-work-queue [settings]="
+            {
+              name: 'myQueue',
+              taskStatusSelection: 'Not Started',
+              workQueueRefreshing: workQueueRefreshing
+            }" (itemUpdated)="refreshWorkQueue()"></app-work-queue>
+          </div>
+        </mat-tab>
+        <mat-tab label="Team Queue">
+          <div class="tab-content">
+            <app-work-queue [settings]="
+            {
+              name: 'workQueue',
+              taskStatusSelection: 'In-Progress',
+              workQueueRefreshing: workQueueRefreshing
+            }" (itemUpdated)="refreshWorkQueue()"></app-work-queue>
+          </div>
+        </mat-tab>
+        <mat-tab label="Create Work">
+          <div class="tab-content">
+            <app-create-work></app-create-work>
+          </div>
+        </mat-tab>
+        <mat-tab label="File Search">
+          <div class="tab-content">
+            <app-box-viewer></app-box-viewer>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <!-- TESTING: COMMENT OUT -->
+  <app-testing></app-testing>
+
+</div>
+
+

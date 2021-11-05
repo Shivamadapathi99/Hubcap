@@ -1,0 +1,19 @@
+<div class="box-document-preview">
+  <ng-container *ngIf="boxFileEmbedCode !== null">
+    <div class="document-name">{{ documentDetails.name }}</div>
+    <div class="controls">
+      <a (click)="advanceDocument('previous')" class="btn-control-item" *ngIf="openDocumentNum > 0"><i
+          class="fas fa-arrow-circle-left edit-mode-control" matTooltip="Previous Document"></i></a>
+
+      <a (click)="advanceDocument('next')" class="btn-control-item"
+        *ngIf="openDocumentNum < settings.data.length - 1"><i class="fas fa-arrow-circle-right edit-mode-control"
+          matTooltip="Next Document"></i></a>
+      <a (click)="openInBox(openFileItem.id)" class="btn-control-item">
+        <i class="fas fa-external-link-alt"></i>
+      </a>
+      <a (click)="close()" class="btn-control-item" *ngIf="settings.showCloseButton === true"><i
+          class="far fa-times-circle"></i></a>
+    </div>
+    <iframe [src]="boxFileEmbedCode | safe"></iframe>
+  </ng-container>
+</div>

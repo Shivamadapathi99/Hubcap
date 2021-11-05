@@ -1,0 +1,14 @@
+<div class="cascading-select-filters" [formGroup]="form" *ngIf="formInit === true">
+  <div class="row">
+    <div class="col-12 col-md-4" *ngFor="let filter of settings.filters">
+      <h6>{{ filter.title }}</h6>
+      <mat-form-field class="full-width-input">
+        <mat-select [formControlName]="filter.fieldName" (selectionChange)="updateFilters()">
+          <mat-option value="All">All</mat-option>
+          <mat-option [value]="option" *ngFor="let option of filter.options">{{ option }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

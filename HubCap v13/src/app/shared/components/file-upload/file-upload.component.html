@@ -1,0 +1,45 @@
+<div class="file-upload">
+  <div [formGroup]="form">
+
+    <input formControlName="formName" #formName name="formName" [hidden]="true">
+    <input formControlName="filesData" #filesData name="filesData" [hidden]="true">
+    <input formControlName="type" #type name="type" [hidden]="true">
+
+    <button mat-flat-button (click)="fileInput.click()">
+      <i class="fas fa-paperclip"></i>
+      <span>Attach Files</span>
+      <input #fileInput type="file" multiple [accept]="acceptedFileTypes" (change)="onSelectFile($event)"
+        style="display:none;" />
+    </button>
+
+    <div class="mt-4">
+      <ul>
+        <ng-container *ngFor="let file of files; let i = index;">
+          <li>{{ file.name }} <span class="fileType">({{ file.type }})</span> <a class="btn-file-remove"
+              (click)="deleteFile(i)"><i class="fas fa-minus-circle"></i></a></li>
+        </ng-container>
+      </ul>
+    </div>
+
+    <div class="mt-4" *ngIf="showUploadButton === true && form.get('filesData')!.value !== null">
+      <button mat-raised-button color="primary" (click)="uploadDocuments()">Upload</button>
+    </div>
+
+    <div class="mt-4" *ngIf="savedFileName !== null">
+      <ul>
+        <Li>
+          {{ savedFileName }} <a class="btn-file-remove" (click)="resetSavedFile()"><i
+              class="fas fa-minus-circle"></i></a>
+        </Li>
+      </ul>
+
+    </div>
+
+    <p class="mt-4">
+      <ng-container *ngFor="let error of errorLog">
+        <span class="error-log-item">{{ error }}</span><br />
+      </ng-container>
+    </p>
+
+  </div>
+</div>

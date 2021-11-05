@@ -1,0 +1,45 @@
+<!-- POLICY SEARCH FORM -->
+<!--
+  Returns array of search results
+  <app-file-search-form></app-file-search-form>
+-->
+
+<!-- POLICY TABS -->
+<!--
+  Dropdown with recent search files
+  <app-file-search-recent-files></app-file-search-recent-files>
+
+  Loop through search results and create an instance for each
+  Settings
+  - type: 'policy',
+  - policyNumber: 'MM1234567'
+  <app-file-search-result-item></app-file-search-result-item>
+-->
+
+<div class="file-search">
+  <div class="row">
+    <div class="col-12">
+      <app-file-search-form></app-file-search-form>
+    </div>
+  </div>
+  <div class="row search-result-tabs">
+    <div class="col-12">
+      <ng-container *ngFor="let searchResultTab of selectedSearchResults; let i = index;">
+        <div class="search-result-tab" [class.selected]="openSearchResultNum === i" (click)="openSearchResultNum = i">
+          {{ searchResultTab.policyNumber }}
+        </div>
+      </ng-container>
+
+      <div class="search-result-content">
+        <ng-container *ngFor="let searchResultTab of selectedSearchResults; let i = index;">
+          <app-file-search-result-item [settings]="
+  {
+    type: 'policyNumber',
+    policyNumber: 'MM1234567'
+  }
+  " [hidden]="openSearchResultNum !== i"></app-file-search-result-item>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

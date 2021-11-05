@@ -1,0 +1,22 @@
+<div class="dashboard-temp">
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <h4>Work Intake by Policy Actions</h4>
+      <div id="chart">
+        <apx-chart [series]="workIntakeByChannelChartOptions.series" [chart]="workIntakeByChannelChartOptions.chart"
+          [labels]="workIntakeByChannelChartOptions.labels" [responsive]="workIntakeByChannelChartOptions.responsive">
+        </apx-chart>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <h4>Work Intake by Channel</h4>
+      <div id="chart2">
+        <apx-chart [series]="workIntakeByChannelPolicyActionsOptions.series"
+          [chart]="workIntakeByChannelPolicyActionsOptions.chart"
+          [labels]="workIntakeByChannelPolicyActionsOptions.labels"
+          [responsive]="workIntakeByChannelPolicyActionsOptions.responsive"></apx-chart>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+{
+  "formId": 1,
+  "formName": "LOSS RUN REQUEST",
+  "requestType": "CLAIM_LOSS_RUN_REQUEST",
+  "boxFolderId": 143827614623,
+  "formData": [
+    {
+      "id": "1",
+      "formControlName": "POLICY_NUMBER",
+      "formControlLabel": "POLICY NUMBER",
+      "formControlType": "input",
+      "dataType": "string",
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        },
+        {
+          "type": "characterLength",
+          "options": {
+            "min": 1,
+            "max": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "formControlName": "AGENCY_CODE",
+      "formControlLabel": "AGENCY CODE",
+      "formControlType": "input",
+      "dataType": "number",
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        },
+        {
+          "type": "characterLength",
+          "options": {
+            "min": 1,
+            "max": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "formControlName": "AGENT_EMAIL_ADDRESS",
+      "formControlLabel": "AGENT EMAIL ADDRESS",
+      "formControlType": "input",
+      "dataType": "string",
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        },
+        {
+          "type": "characterLength",
+          "options": {
+            "min": 1,
+            "max": 200
+          }
+        },
+        {
+          "type": "email",
+          "options": null
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "formControlName": "FILE_UPLOAD",
+      "formControlLabel": "FILE UPLOAD",
+      "formControlType": "fileUpload",
+      "dataType": "file",
+      "minLength": null,
+      "maxLength": null,
+      "acceptedFileTypes": [
+        "jpeg",
+        "gif",
+        "doc",
+        "msg"
+      ],
+      "validators": [
+        {
+          "type": "required",
+          "options": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<div class="button">
+
+  <ng-container [ngSwitch]="settings.type">
+
+    <ng-container *ngSwitchCase="'button'">
+      <button [class.backgroundColor]="settings.backgroundColor" [class.color]="settings.textColor" (click)="click()">
+        <i class="icon-left" [ngClass]="settings.icon" [class.color]="settings.textColor"
+          *ngIf="settings.icon !== null && settings.iconPosition === 'left'"></i>
+        <span class="button-text" *ngIf="settings.buttonText !== null">{{ settings.text }}</span>
+        <i class="icon-right" [ngClass]="settings.icon" [class.color]="settings.textColor"
+          *ngIf="settings.icon !== null && settings.iconPosition === 'right'"></i>
+      </button>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'link'">
+      <a [class.color]="settings.textColor" (click)="click()">
+        <i class="icon-left" [ngClass]="settings.icon"
+          *ngIf="settings.icon !== null && settings.iconPosition === 'left'"></i>
+        <span class="button-text" *ngIf="settings.buttonText !== null">{{ settings.text }}</span>
+        <i class="icon-right" [ngClass]="settings.icon"
+          *ngIf="settings.icon !== null && settings.iconPosition === 'right'"></i>
+      </a>
+    </ng-container>
+
+  </ng-container>
+
+</div>

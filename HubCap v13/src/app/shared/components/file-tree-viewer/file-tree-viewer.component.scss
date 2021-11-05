@@ -1,0 +1,65 @@
+@import '../../../../styles/variables.scss';
+
+.file-tree-viewer {
+  .btn-tree-item {
+    cursor: pointer;
+    font-size: 14px;
+
+    i {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+
+    .fa-file {
+      color: $cap-purple;
+    }
+
+    .fa-folder {
+      color: $cap-blue;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $cap-gray;
+
+      i {
+        color: $cap-gray;
+      }
+    }
+  }
+
+  .file-edit {
+    font-size: 14px;
+    color: $cap-purple;
+    margin-left: 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: $cap-gray;
+    }
+  }
+
+  .file-link {
+    color: $cap-purple;
+  }
+
+  .file-preview {
+    font-size: 14px;
+    color: $cap-purple;
+    margin-left: 10px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 10px 0px 10px 0px;
+    padding: 0px 15px 0px 15px;
+
+    li {
+      margin: 0px 0px 5px 0px;
+    }
+  }
+
+  &.loading {
+    opacity: .8;
+  }
+}

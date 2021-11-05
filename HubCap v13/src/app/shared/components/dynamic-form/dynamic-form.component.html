@@ -1,0 +1,92 @@
+<div class="dynamic-form">
+  <div [formGroup]="form" *ngIf="formInit === true">
+    <div class="row mb-5" *ngIf="settings.data.formName">
+      <div class="col-12">
+        <h4>{{ settings.data.formName }}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <ng-container *ngFor="let formControl of settings.data.formData">
+        <div class="col-12 mb-3" [class.col-md-4]="settings.mode === 'page'" [hidden]="formControl.visible === false"
+          [ngSwitch]="formControl.formControlType">
+          <h6 *ngIf="formControl.formControlType !== 'readOnly'">{{ formControl.formControlLabel }}</h6>
+          <ng-container *ngSwitchCase="'readOnly'">
+            <input [formControlName]="formControl.formControlName" [hidden]="true">
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'checkBoxGroup'">
+            <mat-checkbox *ngFor="let option of formControl.checkBoxOptions" (change)="handleFieldChange()">{{
+              option.title }}</mat-checkbox>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'date'">
+            <mat-form-field class="full-width-input">
+              <input matInput [formControlName]="formControl.formControlName" [matDatepicker]="datePicker"
+                (dateChange)="handleFieldChange()">
+              <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+              <mat-datepicker #datePicker></mat-datepicker>
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'input'">
+            <mat-form-field class="full-width-input">
+              <input matInput [type]="formControl.dataType === 'number' ? 'number' : 'text'"
+                [formControlName]="formControl.formControlName" (change)="handleFieldChange()">
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'radioGroup'">
+            <mat-radio-group [formControlName]="formControl.formControlName" (change)="handleFieldChange()">
+              <ng-container *ngFor="let option of formControl.radioOptions">
+                <mat-radio-button [value]="option.value">{{ option.title }}</mat-radio-button>
+              </ng-container>
+            </mat-radio-group>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'select'">
+            <mat-form-field class="full-width-input">
+              <mat-select [formControlName]="formControl.formControlName" (selectionChange)="handleFieldChange()">
+                <mat-option *ngFor="let option of formControl.selectOptions" [value]="option.value">{{ option.title }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'multiSelect'">
+            <mat-form-field class="full-width-input">
+              <mat-select [formControlName]="formControl.formControlName" multiple
+                (selectionChange)="handleFieldChange()">
+                <mat-option *ngFor="let option of formControl.selectOptions" [value]="option.value">{{ option.title }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'textarea'">
+            <mat-form-field class="full-width-input">
+              <textarea matInput [formControlName]="formControl.formControlName"
+                (change)="handleFieldChange()"></textarea>
+            </mat-form-field>
+          </ng-container>
+
+          <div class="mt-3" *ngSwitchCase="'fileUpload'">
+            <app-box-file-uploader [settings]="
+            {
+              boxParentId: settings.data.boxFileId.toString()
+            }
+            " (itemsUploaded)="updateFileAttachments($event)"></app-box-file-uploader>
+            <!--<app-file-upload (itemEdited)="updateFileAttachments($event)"></app-file-upload>-->
+          </div>
+
+        </div>
+      </ng-container>
+    </div>
+    <div class="row mt-5">
+      <div class="col-12">
+        <button mat-raised-button color="primary" [disabled]="formIsValid === false" (click)="submit()"
+          (keyup.enter)="submit()">{{
+          settings.submitButtonText }}</button>
+      </div>
+    </div>
+  </div>
+</div>

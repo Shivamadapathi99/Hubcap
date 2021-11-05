@@ -1,0 +1,49 @@
+@import '../../../../styles/variables.scss';
+
+.file-search {
+  position: relative;
+
+  .search-result-tabs {
+    .search-result-tab {
+      position: relative;
+      top: 2px;
+      background-color: #eeeeee;
+      display: inline-block;
+      border-radius: 8px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border: 2px solid $cap-gray-border;
+      padding: 10px 15px 10px 15px;
+      margin: 0px 2px 0px 0px;
+      text-align: center;
+      color: $cap-gray;
+      cursor: pointer;
+
+      &.selected {
+        background-color: $cap-white;
+        border-bottom-color: $cap-white;
+        cursor: auto;
+
+        &:hover {
+          background-color: $cap-white;
+          color: $cap-gray;
+        }
+      }
+
+      &:hover {
+        background-color: $cap-gray;
+        color: $cap-white;
+      }
+    }
+
+    .search-result-content {
+      width: 100%;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      border: 2px solid $cap-gray-border;
+      padding: 20px 20px 20px 20px;
+      -webkit-box-shadow: 5px 5px 11px -6px rgba(0, 0, 0, 0.69);
+      box-shadow: 5px 5px 11px -6px rgba(0, 0, 0, 0.69);
+    }
+  }
+}

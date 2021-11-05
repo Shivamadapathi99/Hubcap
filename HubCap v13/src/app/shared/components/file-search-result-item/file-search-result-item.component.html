@@ -1,0 +1,111 @@
+<div class="file-search-result-item">
+  <div class="row" *ngIf="policyInfo !== null" [hidden]="editedWorkItem !== null">
+    <div class="col-12" [class.col-md-4]="openFileItem !== null">
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Policy Info
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="policy-info mt-3">
+            <span class="title">Policy Number:</span> {{ policyInfo.policyNumber }}<br />
+            <span class="title">Insured Name:</span> {{ policyInfo.insuredName }}<br />
+            <span class="title">Agency Code:</span> {{ policyInfo.agencyCode }}<br />
+            <span class="title">Agent Name:</span> {{ policyInfo.agentName }}
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Document Tree
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-file-tree-viewer [settings]="
+      {
+        data: searchResults,
+        openFileItem: openFileItem
+      }
+      " (previewDocument)="openFileItem = $event"></app-file-tree-viewer>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Policy Documents
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-file-tree-viewer [settings]="
+      {
+        data: policyDocuments,
+        openFileItem: openFileItem
+      }" (previewDocument)="openFileItem = $event"></app-file-tree-viewer>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Related Tasks
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-related-tasks-list [settings]="
+          {
+            policyNumber: settings.policyNumber,
+            data: relatedTasks
+          }
+          " (itemSelected)="editedWorkItem = $event" (updateRelatedTasks)="getRelatedTasks()"></app-related-tasks-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Related Files
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a (click)="openAddRelation()" class="btn-add-relation">Add Relation <i class="fas fa-plus"></i></a>
+          <div class="mt-3">
+            <app-file-tree-viewer [settings]="
+      {
+        data: relatedFiles,
+        openFileItem: openFileItem
+      }
+      " (previewDocument)="openFileItem = $event"></app-file-tree-viewer>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="col-12 col-md-8" *ngIf="openFileItem !== null">
+      <app-box-document-preview [settings]="
+  {
+    showCloseButton: true,
+    data: [
+      openFileItem
+    ]
+  }" (closeDocument)="openFileItem.preview = false; openFileItem = null;"></app-box-document-preview>
+    </div>
+  </div>
+
+  <div class="add-relation" *ngIf="addRelationFormData !== null">
+    <div class="add-relation-content">
+      <a (click)="addRelationFormData = null" class="btn-close-window"><i class="fas fa-times-circle"
+          matTooltip="Close window"></i></a>
+      <app-dynamic-form [settings]="
+        {
+            name: 'Add Relation',
+            answerData: null,
+            data: addRelationFormData,
+            mode: 'modal',
+            submitButtonText: 'Add'
+        }
+        " (saveForm)="addRelation($event)"></app-dynamic-form>
+    </div>
+
+  </div>
+
+  <div *ngIf="editedWorkItem !== null">
+    <app-work-item-edit [settings]="
+      {
+        data: relatedTasks,
+        editedWorkItem: editedWorkItem,
+        selectedItems: []
+      }
+  " (windowClosed)="editedWorkItem = null;" (itemUpdated)="getRelatedTasks()"></app-work-item-edit>
+  </div>
+</div>

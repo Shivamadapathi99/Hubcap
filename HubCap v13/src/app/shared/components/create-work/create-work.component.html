@@ -1,0 +1,25 @@
+<div class="create-work">
+  <div class="row mb-5">
+    <div class="col-12 col-md-4">
+      <h6>Work Type</h6>
+      <mat-form-field class="full-width-input">
+        <mat-select [formControl]="formType" (selectionChange)="loadForm($event)">
+          <mat-option [value]="form" *ngFor="let form of formList">{{ form.formName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-dynamic-form [settings]="
+      {
+          name: 'Create Work',
+          answerData: null,
+          data: formData,
+          mode: 'page',
+          submitButtonText: 'Create Work Item'
+      }
+      " *ngIf="formData !== null" (saveForm)="saveForm($event)"></app-dynamic-form>
+    </div>
+  </div>
+</div>

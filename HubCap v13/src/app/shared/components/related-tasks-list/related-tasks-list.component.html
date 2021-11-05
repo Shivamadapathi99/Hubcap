@@ -1,0 +1,12 @@
+<div class="related-tasks-list">
+  <div class="related-task" *ngFor="let task of settings.data">
+    <i class="fas fa-pencil-alt icon-edit" (click)="openTask(task)" matTooltip="Edit"></i>
+    <ng-container *ngIf="task.lockedStatus === false || task.lockedBy === dataMain.user.email">
+      <i class="fas fa-lock icon-lock" (click)="updateLockedStatus(task, true)" *ngIf="task.lockedStatus === false"
+        matTooltip="Lock"></i>
+      <i class="fas fa-lock icon-lock locked" (click)="updateLockedStatus(task, false)"
+        *ngIf="task.lockedStatus === true" matTooltip="Unlock"></i>
+    </ng-container>
+    {{ task.taskName }}
+  </div>
+</div>

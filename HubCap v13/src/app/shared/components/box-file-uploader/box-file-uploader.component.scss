@@ -1,0 +1,56 @@
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
+@import '../../../../styles/variables.scss';
+
+.box-file-uploader {
+  width: 100%;
+
+  i {
+    margin: 0px 10px 0px 0px;
+  }
+
+  .btn-file-remove {
+    i {
+      color: $cap-red;
+      margin: 0px 0px 0px 10px;
+      cursor: pointer;
+
+      &:hover {
+        color: $cap-gray;
+      }
+    }
+  }
+
+  .error-log-item {
+    color: $cap-red;
+  }
+
+  .fileType {
+    color: $cap-blue;
+    font-style: italic;
+  }
+
+  ul {
+    margin: 10px 0px 10px 0px;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+
+    li {
+      margin: 0px 0px 10px 0px;
+      padding: 0px 0px 0px 0px;
+    }
+  }
+
+  .mat-flat-button {
+    i {
+      color: $cap-navy;
+    }
+
+    &:hover {
+      i {
+        color: $cap-blue;
+      }
+    }
+  }
+}

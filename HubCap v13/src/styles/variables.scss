@@ -1,0 +1,83 @@
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+// Colors
+$hl-alpha: .1;
+$cap-baby-blue: #4A90E2;
+$cap-baby-blue-alpha: rgba(74, 144, 226, $hl-alpha);
+$cap-black: #000000;
+$cap-black-alpha: rgba(0, 0, 0, .5);
+$cap-blue: #3cc6ed;
+$cap-blue-alpha: rgba(60, 198, 237, $hl-alpha);
+$cap-blue-alpha-dark: rgba(60, 198, 237, .8);
+$cap-gray: #8e8886;
+$cap-gray-alpha: rgba(142, 136, 134, $hl-alpha);
+$cap-gray-hl: #eeeeee;
+$cap-gray-hl-2: #cccccc;
+$cap-gray-light: #fafafa;
+$cap-green: #99ca3c;
+$cap-green-alpha: rgba(153, 202, 60, $hl-alpha);
+$cap-navy: #172b54;
+$cap-navy-alpha: rgba(23, 43, 84, $hl-alpha);
+$cap-orange: #f8981d;
+$cap-orange-alpha: rgba(248, 152, 29, $hl-alpha);
+$cap-purple: #8896cc;
+$cap-purple-alpha: rgba(136, 150, 204, $hl-alpha);
+$cap-red: #eb486a;
+$cap-red-alpha: rgba(235, 72, 106, $hl-alpha);
+$cap-text: #6d6f71;
+$cap-white: #ffffff;
+$cap-white-alpha: rgba(255, 255, 255, $hl-alpha);
+$cap-white-alpha-70: rgba(255, 255, 255, .7);
+$cap-yellow: #ffd503;
+$cap-yellow-alpha: rgba(255, 213, 3, $hl-alpha);
+$cap-watermark: rgba(142, 136, 134, .3);
+$cap-incomplete: $cap-gray-alpha;
+$cap-field-color: #555555;
+$cap-field-highlight: rgba(255, 213, 3, $hl-alpha);
+$cap-field-border: $cap-yellow;
+$cap-gray-border: #d6d6d6;
+// Sizing
+$max-content-width: 1170px;
+$max-content-width-sm: 1000px;
+$max-copy-width: 800px;
+// Border Radius
+$border-radius-xs: 5px;
+$border-radius-sm: 10px;
+$border-radius-md: 15px;
+// Mixins
+@mixin textShadow() {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+@mixin noTextShadow() {
+    text-shadow: none;
+}
+
+@mixin shadow() {
+    // box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.3);
+}
+
+@mixin shadowUp() {
+    box-shadow: 0 -3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+@mixin hoverShadow() {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+@mixin innerShadow() {
+    -webkit-box-shadow: inset 0px 0px 2px 2px rgba(0, 0, 0, 0.14);
+    -moz-box-shadow: inset 0px 0px 2px 2px rgba(0, 0, 0, 0.14);
+    box-shadow: inset 0px 0px 2px 2px rgba(0, 0, 0, 0.14);
+}
+
+@mixin noShadow() {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}

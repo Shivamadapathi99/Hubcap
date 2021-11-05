@@ -1,0 +1,54 @@
+<div class="work-item-history" *ngIf="workHistoryData !== null">
+
+  <div class="mb-3" *ngIf="settings.showCloseButton === true">
+    <app-button [settings]="
+      {
+        type: 'link',
+        text: 'Back',
+        icon: 'fas fa-chevron-left',
+        iconPosition: 'left',
+        backgroundColor: null,
+        textColor: 'textCapNavy'
+      }
+      " (clicked)="close()"></app-button>
+  </div>
+
+  <div [hidden]="workHistoryData.rows.length < 1">
+    <div class="table">
+      <div class="table-container">
+        <div class="mat-elevation-z4 data-table">
+          <mat-table [dataSource]="pageSettings.tableSettings.data" matSort>
+
+            <ng-container *ngFor="let col of pageSettings.tableSettings.displayColumns; let i = index;"
+              [matColumnDef]="col">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ pageSettings.tableSettings.columnTitles[i] }}
+              </mat-header-cell>
+              <mat-cell *matCellDef="let item">
+                <ng-container [ngSwitch]="pageSettings.tableSettings.pipes[i]">
+                  <span *ngSwitchCase="''">
+                    {{ item[col] }}
+                  </span>
+                  <span *ngSwitchCase="'date'">
+                    {{ item[col] | date:'MM/dd/yyyy hh:mm a' }}
+                  </span>
+                </ng-container>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="pageSettings.tableSettings.displayColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: pageSettings.tableSettings.displayColumns;"></mat-row>
+          </mat-table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="paginator">
+            <mat-paginator #paginator [pageSize]="20" [pageSizeOptions]="[20, 50, 100, 250, 500]"
+              [showFirstLastButtons]="true">
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

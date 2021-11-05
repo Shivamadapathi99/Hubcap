@@ -1,0 +1,37 @@
+@import '../../../../styles/variables.scss';
+
+.main {
+  padding: 20px 20px 20px 20px;
+
+  .capspecialty-logo-main {
+    max-width: 150px;
+  }
+
+  .tab-content {
+    padding: 30px 20px 20px 20px;
+  }
+
+  .quick-links {
+
+    .btn-quick-link {
+      font-size: 14px;
+      color: $cap-navy;
+      display: inline-block;
+      margin: 0px 10px 0px 10px;
+      cursor: pointer;
+
+      &:hover {
+        color: $cap-gray;
+        text-decoration: none;
+      }
+
+    }
+
+    .quick-links-title {
+      font-weight: bold;
+      color: $cap-gray;
+      font-size: 14px;
+    }
+
+  }
+}

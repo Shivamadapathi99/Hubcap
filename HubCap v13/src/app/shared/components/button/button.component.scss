@@ -1,0 +1,36 @@
+@import '../../../../styles/variables.scss';
+
+.button {
+  font-size: 16px;
+
+  button {
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $cap-gray;
+    }
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+      color: $cap-gray;
+    }
+  }
+
+  i {
+    font-size: 16px;
+  }
+
+  .icon-left {
+    margin-right: 10px;
+  }
+
+  .icon-right {
+    margin-left: 10px;
+  }
+}

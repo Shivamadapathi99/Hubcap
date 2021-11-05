@@ -1,0 +1,64 @@
+@import '../../../../styles/variables.scss';
+
+.work-item-history {
+  .btn-close {
+    width: 20px;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    i {
+      font-size: 20px;
+      color: $cap-black;
+
+      &:hover {
+        color: $cap-gray;
+      }
+    }
+  }
+
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    position: relative;
+
+    .btn-refresh-work-queue {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+
+      i {
+        color: $cap-white;
+        font-size: 24px;
+        cursor: pointer;
+
+        &:hover {
+          color: $cap-blue;
+        }
+      }
+    }
+  }
+
+  .data-table {
+    min-width: 1000px;
+  }
+
+  tr.element-row {
+    background-color: $cap-white;
+  }
+
+  td {
+    position: relative;
+  }
+
+  .element-row {
+    td {
+      border-bottom-width: 0;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-right: 20px;
+    }
+  }
+}

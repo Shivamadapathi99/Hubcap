@@ -1,0 +1,61 @@
+@import '../../../../styles/variables.scss';
+
+.related-tasks-list {
+  i {
+    font-size: 14px;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+
+    &.icon-approve {
+      color: $cap-gray;
+
+      &.future-task {
+        color: $cap-blue;
+      }
+
+      &.in-progress {
+        color: $cap-yellow;
+      }
+
+      &.complete {
+        color: $cap-green;
+      }
+    }
+
+    &.icon-clock {
+      color: $cap-green;
+    }
+
+    &.icon-edit {
+      color: $cap-blue;
+    }
+
+    &.icon-link {
+      color: $cap-navy;
+    }
+
+    &.icon-lock {
+      color: $cap-black;
+
+      &.locked {
+        color: $cap-red;
+      }
+    }
+
+    &.icon-nav {
+      background-color: $cap-blue;
+      text-align: center;
+      color: $cap-white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    &:hover {
+      color: $cap-gray;
+    }
+  }
+
+  .mat-column-edit {
+    min-width: 200px;
+  }
+}

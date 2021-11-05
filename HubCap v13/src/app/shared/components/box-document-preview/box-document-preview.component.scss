@@ -1,0 +1,60 @@
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
+@import '../../../../styles/variables.scss';
+
+.box-document-preview {
+  position: relative;
+
+  .controls {
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    top: 15px;
+    left: 50px;
+    text-align: right;
+
+    .btn-control-item {
+      width: 20px;
+      cursor: pointer;
+      margin-left: 10px;
+      display: inline-block;
+
+      i {
+        font-size: 20px;
+        color: $cap-gray;
+
+        &:hover {
+          color: $cap-gray;
+        }
+      }
+    }
+  }
+
+
+  .document-name {
+    position: absolute;
+    top: 17px;
+    left: 0px;
+    color: $cap-purple;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  iframe {
+    height: 100vh;
+    min-height: 600px;
+    width: 100%;
+    border: 2px solid $cap-gray-border;
+    border-radius: 10px;
+  }
+
+  @include media-breakpoint-down(md) {
+    top: 40px;
+
+    .document-name {
+      top: -26px;
+    }
+  }
+
+}

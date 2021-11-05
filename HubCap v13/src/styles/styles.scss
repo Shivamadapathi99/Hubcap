@@ -1,0 +1,73 @@
+@import "~bootstrap/scss/bootstrap";
+@import './variables.scss';
+@import './material-config.scss';
+@import './fonts.scss';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+
+a {
+  color: $cap-blue;
+
+  &:hover {
+    color: $cap-navy;
+  }
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+.backgroundColorCapBlue {
+  background-color: $cap-blue;
+}
+
+.backgroundColorCapGray {
+  background-color: $cap-gray;
+}
+
+.backgroundColorCapGreen {
+  background-color: $cap-green;
+}
+
+.backgroundColorCapPurple {
+  background-color: $cap-purple;
+}
+
+.backgroundColorTransparent {
+  background-color: transparent;
+}
+
+.backgroundColorCapYellow {
+  background-color: $cap-yellow;
+}
+
+.backgroundColorCapWhite {
+  background-color: $cap-white;
+}
+
+.textCapBlue {
+  color: $cap-blue;
+}
+
+.textCapGray {
+  color: $cap-gray;
+}
+
+.textCapGreen {
+  color: $cap-green;
+}
+
+.textCapPurple {
+  color: $cap-purple;
+}
+
+.textCapYellow {
+  color: $cap-yellow;
+}
+
+.textCapWhite {
+  color: $cap-white;
+}

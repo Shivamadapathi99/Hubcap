@@ -1,0 +1,378 @@
+@import "~@angular/material/_theming";
+@include mat-core();
+$mat-cap-blue: (50: $cap-blue, 100: $cap-blue, 200: $cap-blue, 300: $cap-blue, 400: $cap-blue, 500: $cap-blue, 600: $cap-blue, 700: $cap-blue, 800: $cap-blue, 900: $cap-blue, A100: $cap-blue, A200: $cap-blue, A400: $cap-blue, A700: $cap-blue, contrast: (50: $dark-primary-text, 100: $dark-primary-text, 200: $dark-primary-text, 300: $dark-primary-text, 400: $dark-primary-text, 500: $light-primary-text, 600: $light-primary-text, 700: $light-primary-text, 800: $light-primary-text, 900: $light-primary-text, A100: $dark-primary-text, A200: $light-primary-text, A400: $light-primary-text, A700: $light-primary-text, ));
+$mat-cap-yellow: (50: $cap-yellow, 100: $cap-yellow, 200: $cap-yellow, 300: $cap-yellow, 400: $cap-yellow, 500: $cap-yellow, 600: $cap-yellow, 700: $cap-yellow, 800: $cap-yellow, 900: $cap-yellow, A100: $cap-yellow, A200: $cap-yellow, A400: $cap-yellow, A700: $cap-yellow, contrast: (50: $dark-primary-text, 100: $dark-primary-text, 200: $dark-primary-text, 300: $dark-primary-text, 400: $dark-primary-text, 500: $light-primary-text, 600: $light-primary-text, 700: $light-primary-text, 800: $light-primary-text, 900: $light-primary-text, A100: $dark-primary-text, A200: $light-primary-text, A400: $light-primary-text, A700: $light-primary-text, ));
+$mat-cap-red: (50: $cap-red, 100: $cap-red, 200: $cap-red, 300: $cap-red, 400: $cap-red, 500: $cap-red, 600: $cap-red, 700: $cap-red, 800: $cap-red, 900: $cap-red, A100: $cap-red, A200: $cap-red, A400: $cap-red, A700: $cap-red, contrast: (50: $dark-primary-text, 100: $dark-primary-text, 200: $dark-primary-text, 300: $dark-primary-text, 400: $dark-primary-text, 500: $light-primary-text, 600: $light-primary-text, 700: $light-primary-text, 800: $light-primary-text, 900: $light-primary-text, A100: $dark-primary-text, A200: $light-primary-text, A400: $light-primary-text, A700: $light-primary-text, ));
+$app-primary: mat-palette($mat-cap-blue, 600);
+$app-accent: mat-palette($mat-cap-yellow, 700);
+$app-warn: mat-palette($mat-cap-red);
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($app-theme);
+$custom-typography: mat-typography-config($font-family: 'Proxima-Nova-A-Medium');
+@include mat-core($custom-typography);
+
+// CSS Overrides
+// Angular Material Styles
+button:focus {
+  outline-color: $cap-blue;
+}
+
+.mat-row {
+  height: auto;
+}
+
+.mat-cell {
+  color: $cap-text;
+  padding: 8px 8px 8px 0;
+  overflow-wrap: break-word;
+}
+
+button,
+a.mat-raised-button,
+button.mat-raised-button,
+a.mat-raised-button.mat-primary,
+a.mat-raised-button.mat-secondary,
+a.mat-raised-button.mat-warn,
+button.mat-raised-button.mat-primary,
+button.mat-raised-button.mat-secondary,
+button.mat-raised-button.mat-warn,
+a.mat-flat-button,
+button.mat-flat-button,
+a.mat-flat-button.mat-primary,
+a.mat-flat-button.mat-secondary,
+a.mat-flat-button.mat-warn,
+button.mat-flat-button.mat-primary,
+button.mat-flat-button.mat-secondary,
+button.mat-flat-button.mat-warn {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  text-decoration: none;
+  color: $cap-white;
+  background-color: $cap-blue;
+  border-radius: $border-radius-xs;
+  border: 2px solid $cap-blue;
+  padding: 14px 20px 14px 20px;
+
+  &.cancel {
+    background-color: $cap-white;
+    color: $cap-gray;
+    border: 2px solid $cap-gray;
+  }
+}
+
+button,
+a.mat-raised-button:hover,
+button.mat-raised-button:hover,
+a.mat-raised-button.mat-primary:hover,
+a.mat-raised-button.mat-secondary:hover,
+a.mat-raised-button.mat-warn:hover,
+button.mat-raised-button.mat-primary:hover,
+button.mat-raised-button.mat-secondary:hover,
+button.mat-raised-button.mat-warn:hover,
+a.mat-flat-button:hover,
+button.mat-flat-button:hover,
+a.mat-flat-button.mat-primary:hover,
+a.mat-flat-button.mat-secondary:hover,
+a.mat-flat-button.mat-warn:hover,
+button.mat-flat-button.mat-primary:hover,
+button.mat-flat-button.mat-secondary:hover,
+button.mat-flat-button.mat-warn:hover {
+  text-decoration: none;
+  color: $cap-white;
+  background-color: $cap-gray;
+  border: 2px solid $cap-gray;
+}
+
+.mat-button-focus-overlay {
+  background-color: transparent !important;
+}
+
+.mat-raised-button.mat-primary .mat-button-wrapper,
+.mat-raised-button.mat-warn .mat-button-wrapper {
+  color: $cap-white;
+
+  i {
+    color: $cap-white;
+    margin: 0px 5px 0px 5px;
+  }
+}
+
+.mat-flat-button.mat-primary[disabled],
+.mat-flat-button.mat-accent[disabled],
+.mat-flat-button.mat-warn[disabled],
+.mat-flat-button[disabled][disabled],
+.mat-raised-button.mat-primary[disabled],
+.mat-raised-button.mat-accent[disabled],
+.mat-raised-button.mat-warn[disabled],
+.mat-raised-button[disabled][disabled],
+.mat-fab.mat-primary[disabled],
+.mat-fab.mat-accent[disabled],
+.mat-fab.mat-warn[disabled],
+.mat-fab[disabled][disabled],
+.mat-mini-fab.mat-primary[disabled],
+.mat-mini-fab.mat-accent[disabled],
+.mat-mini-fab.mat-warn[disabled],
+.mat-mini-fab[disabled][disabled] {
+  color: $cap-white;
+  background-color: $cap-blue;
+  opacity: .5;
+}
+
+.mat-checkbox-inner-container {
+  @include shadow();
+}
+
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+.mat-checkbox-background {
+  background-color: $cap-white;
+  border: 1px solid $cap-blue;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: $cap-blue;
+}
+
+.mat-expansion-panel-header {
+  background-color: $cap-navy !important;
+  border-bottom: 2px solid $cap-blue;
+  &:hover {
+    background-color: $cap-gray !important;
+  }
+}
+
+.mat-expansion-panel-header.mat-expanded {
+  height: 48px;
+}
+
+.mat-expansion-panel-header-title {
+  font-weight: bold;
+  color: $cap-white;
+}
+
+.mat-expansion-indicator:after {
+  color: $cap-blue;
+}
+
+.mat-expansion-panel-spacing {
+  margin: 0px 0px 10px 0px;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0px 0px 8px 0px;
+  border-top: 8px solid transparent;
+}
+
+.mat-form-field-suffix .mat-icon-button {
+  color: $cap-blue;
+}
+
+.mat-form-field-label {
+  color: $cap-gray-hl-2;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: $cap-gray-hl-2;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  top: 14px;
+}
+
+.mat-form-field-prefix {
+  color: $cap-field-color;
+  margin: 0px 0px 0px 0px;
+}
+
+.mat-form-field-suffix {
+  color: $cap-field-color;
+  margin: 0px 0px 0px 0px;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: $cap-watermark;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: $cap-watermark;
+}
+
+.mat-form-field {
+  color: $cap-field-color;
+}
+
+.mat-header-cell {
+  color: $cap-white;
+  font-weight: bold;
+}
+
+.mat-header-row {
+  background-color: $cap-navy;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 4px solid $cap-blue;
+  @include shadow();
+}
+
+.mat-input-element {
+  color: $cap-field-color;
+}
+
+.mat-radio-container {}
+
+.mat-radio-button,
+.mat-checkbox {
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: $cap-blue;
+}
+
+.mat-radio-outer-circle {
+  border-width: 1px !important;
+}
+
+.mat-radio-outer-circle,
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $cap-blue;
+  @include shadow();
+}
+
+.mat-select-arrow {
+  color: $cap-blue;
+}
+
+.mat-select-value {
+  color: $cap-field-color;
+}
+
+button.mat-sort-header-button {
+  color: $cap-navy;
+  font-weight: bold;
+}
+
+.mat-paginator-icon {
+  color: $cap-blue;
+}
+
+.mat-paginator-icon:hover {
+  color: $cap-gray;
+}
+
+.cdk-overlay-pane {
+  .mat-menu-panel {
+    border-radius: $border-radius-sm;
+  }
+}
+
+.mat-mini-fab.mat-primary:hover {
+  background-color: $cap-gray;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: $cap-gray-light;
+}
+
+.mat-row:nth-child(even) {
+  background-color: $cap-blue-alpha;
+}
+
+.mat-row:last-of-type {
+  border-bottom: 4px solid $cap-blue;
+}
+
+.mat-sort-header-arrow {
+  color: $cap-blue;
+}
+
+.mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition {
+  opacity: 0;
+}
+
+.mat-sort-header-pointer-left.ng-trigger.ng-trigger-leftPointer {
+  transform: rotate(-45deg);
+}
+
+.mat-sort-header-pointer-right.ng-trigger.ng-trigger-rightPointer {
+  transform: rotate(45deg);
+}
+
+.mat-tab-body .mat-tab-body-content {
+  overflow: hidden;
+}
+
+.mat-tab-nav-bar,
+.mat-tab-header {
+  border-bottom: 4px solid $cap-gray-hl-2;
+}
+
+.mat-tab-label {
+  height: 36px;
+  font-size: 15px;
+}
+
+.mat-tooltip-panel {
+  .mat-tooltip {
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: $border-radius-sm;
+    background-color: $cap-blue;
+    color: $cap-white;
+    max-width: 100%;
+    word-break: break-word;
+    @include shadow();
+
+    &.declined-tooltip {
+      background-color: $cap-red;
+      color: $cap-white;
+    }
+
+    &.referral-tooltip {
+      background-color: $cap-yellow;
+      color: $cap-navy;
+    }
+
+    &.tooltip-blue {
+      background-color: $cap-blue;
+      color: $cap-white;
+    }
+
+    &.tooltip-green {
+      background-color: $cap-green;
+      color: $cap-white;
+    }
+
+    &.tooltip-yellow {
+      background-color: $cap-yellow;
+      color: $cap-gray;
+    }
+
+    &.tooltip-red {
+      background-color: $cap-red;
+      color: $cap-white;
+    }
+
+    &.tooltip-white {
+      background-color: $cap-white;
+      color: $cap-navy;
+    }
+  }
+}
+
+.mat-paginator-outer-container {
+  background-color: $cap-navy;
+  color: $cap-white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+  @include shadow();
+
+  .mat-select-value {
+    color: $cap-white;
+  }
+}

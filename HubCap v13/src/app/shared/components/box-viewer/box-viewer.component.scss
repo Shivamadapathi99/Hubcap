@@ -1,0 +1,254 @@
+@import '../../../../styles/variables.scss';
+
+.box-viewer {
+  position: relative;
+
+  .btn-box-search {
+    color: $cap-blue;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      color: $cap-gray;
+      background-color: transparent;
+    }
+  }
+
+  .btn-reset-search {
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      color: $cap-gray;
+    }
+  }
+
+  .policy-info {
+    font-size: 14px;
+
+    .title {
+      font-weight: 600;
+      color: $cap-navy;
+      padding-bottom: 5px;
+      display: inline-block;
+    }
+  }
+
+  .search-results {
+    .btn-tree-item {
+      cursor: pointer;
+      font-size: 14px;
+
+      i {
+        font-size: 20px;
+        margin-right: 10px;
+      }
+
+      .fa-file {
+        color: $cap-purple;
+      }
+
+      .fa-folder {
+        color: $cap-blue;
+      }
+
+      &:hover {
+        text-decoration: none;
+        color: $cap-gray;
+
+        i {
+          color: $cap-gray;
+        }
+      }
+    }
+
+    .file-edit {
+      font-size: 14px;
+      color: $cap-purple;
+      margin-left: 10px;
+      cursor: pointer;
+
+      &:hover {
+        color: $cap-gray;
+      }
+    }
+
+    .file-link {
+      color: $cap-purple;
+    }
+
+    .file-preview {
+      font-size: 14px;
+      color: $cap-purple;
+      margin-left: 10px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 10px 0px 10px 0px;
+      padding: 0px 15px 0px 15px;
+
+      li {
+        margin: 0px 0px 5px 0px;
+      }
+    }
+
+    &.loading {
+      opacity: .8;
+    }
+  }
+
+}
+
+.add-relation {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  background-color: $cap-black-alpha;
+
+  .add-relation-content {
+    width: 95%;
+    max-width: 400px;
+    max-height: 90vh;
+    margin: 0px auto 0px auto;
+    background-color: $cap-white;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: auto;
+    position: relative;
+    top: 5vh;
+
+    .btn-close-window {
+      display: inline-block;
+      font-size: 25px;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      z-index: 200;
+      cursor: pointer;
+
+      i {
+        color: $cap-navy;
+      }
+
+      &:hover {
+        i {
+          color: $cap-gray;
+        }
+      }
+    }
+  }
+}
+
+
+.btn-add-relation {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px 0px 10px 0px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn-close-document {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 8px;
+  right: 22px;
+  cursor: pointer;
+
+  i {
+    font-size: 20px;
+    color: $cap-purple;
+
+    &:hover {
+      color: $cap-gray;
+    }
+  }
+}
+
+.document-name {
+  position: absolute;
+  top: 17px;
+  left: 0px;
+  color: $cap-purple;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+}
+
+iframe {
+  height: 100%;
+  min-height: 600px;
+  width: 100%;
+  border: 2px solid $cap-purple;
+  border-radius: 10px;
+  @include shadow();
+}
+
+.related-tasks {
+  i {
+    font-size: 14px;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+
+    &.icon-approve {
+      color: $cap-gray;
+
+      &.future-task {
+        color: $cap-blue;
+      }
+
+      &.in-progress {
+        color: $cap-yellow;
+      }
+
+      &.complete {
+        color: $cap-green;
+      }
+    }
+
+    &.icon-clock {
+      color: $cap-green;
+    }
+
+    &.icon-edit {
+      color: $cap-blue;
+    }
+
+    &.icon-link {
+      color: $cap-navy;
+    }
+
+    &.icon-lock {
+      color: $cap-black;
+
+      &.locked {
+        color: $cap-red;
+      }
+    }
+
+    &.icon-nav {
+      background-color: $cap-blue;
+      text-align: center;
+      color: $cap-white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    &:hover {
+      color: $cap-gray;
+    }
+  }
+
+  .mat-column-edit {
+    min-width: 200px;
+  }
+}

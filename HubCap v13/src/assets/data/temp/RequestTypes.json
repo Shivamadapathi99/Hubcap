@@ -1,0 +1,14 @@
+[
+{
+  "departmentName": "OPERATIONS",
+  "formName": "LOSS RUN REQUEST",
+  "requestType":"CLAIM_LOSS_RUN_REQUEST",
+  "formId": 1
+},
+{
+  "departmentName": "OPERATIONS",
+  "formName": "NEW SUBMISSION - PL",
+  "requestType":"PL_NEW_SUBMISSION",
+  "formId": 2
+}  
+]
